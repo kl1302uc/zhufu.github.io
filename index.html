@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>立方体实验</title>
+
+  <!-- HTML -->
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      overflow: hidden;
+      background-color: pink;
+      perspective: 3000px;
+    }
+
+    .wrapper {
+      position: relative;
+      top: 10vh;
+      margin: auto;
+      width: 30vw;
+      height: 30vw;
+
+      transform-style: preserve-3d;
+      transform-origin: center center -15vw;
+      animation: change 5s linear forwards;
+
+    }
+
+    @keyframes change {
+      0% {
+        transform: rotateY(0deg);
+      }
+
+      50% {
+        transform: rotateY(-270deg)
+      }
+
+      80% {
+        transform: rotateX(-90deg);
+      }
+
+      100% {
+        transform: rotateX(90deg)
+      }
+    }
+
+    .wrapper>* {
+      border: solid 1px black;
+      opacity: 0.7;
+      width: 30vw;
+      height: 30vw;
+      background-color: deeppink;
+      color: yellow;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      text-align: center;
+      line-height: 30vw;
+      font-size: 15vw;
+      transform-origin: center center -15vw;
+    }
+
+    .wrapper>div:nth-child(6) {
+      transform: rotateX(-90deg);
+    }
+
+    .wrapper>div:nth-child(5) {
+      transform: rotateX(90deg);
+    }
+
+    .wrapper>div:nth-child(4) {
+      transform: rotateY(-90deg);
+    }
+
+    .wrapper>div:nth-child(3) {
+      transform: rotateY(180deg);
+    }
+
+    .wrapper>div:nth-child(2) {
+      transform: rotateY(90deg);
+    }
+
+    .wrapper>div:nth-child(1) {
+      transform: rotateX(0deg);
+    }
+
+    #zhufu {
+      background: white;
+      display: block;
+      text-align: center;
+      position: absolute;
+      top: 90vh;
+      left: 0;
+      right: 0;
+      font-size: 7vw;
+      color: red;
+      text-decoration: none;
+
+    }
+
+    audio {
+
+      top: 0;
+    }
+
+    .foot {
+      background-color: palegoldenrod;
+      position: fixed;
+      bottom: 15vh;
+      width: 100%;
+    }
+
+    .foot>h2 {
+      margin: 0 auto;
+    }
+
+    .foot>.btn {
+      display: flex;
+      justify-content: center;
+    }
+
+    .foot>.btn>button {
+      font-size: 6vw;
+      margin: 7vw;
+    }
+
+    .msg {
+      display:none;
+      position: absolute;
+      top: 0;
+      z-index: 99;
+      background-color: pink;
+      font-size: 7vw;
+      color: deeppink;
+      height: 100%;
+      overflow: auto;
+      border: solid 5px green;
+      background: url("./jia.jpg") no-repeat;
+      background-size: cover;
+      font-weight: bolder;
+      box-sizing: border-box;
+
+    }
+    .play{
+      display: none;
+      text-decoration: none;
+      width:100%;
+      bottom:30vh;
+      position: absolute;
+      background-color: wheat;
+      height:9vw;
+      font-size: 6vw;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <audio controls autoplay>
+    <source src="yuan.mp3" />
+  </audio>
+  <div class="wrapper" id="wrap">
+    <div>德</div>
+    <div>侠</div>
+    <div>对</div>
+    <div>不</div>
+    <div>起</div>
+    <div>你</div>
+  </div>
+  <div class="foot">
+    <h2>真心向你道歉希望你能原谅</h2>
+    <div class="btn">
+      <button>不原谅</button>
+      <button>原谅</button>
+    </div>
+  </div>
+  <div class="msg">你真的不愿意原谅我吗？
+    我对你说的所有的话都是出自内心的最真实的，
+    不论如何我都把我最真实的一面展示给你了，
+    我的懦弱、不自信、孤僻、优柔寡断等，
+    也希望你能真的原谅我，
+    我不想亏欠任何人，
+    这些日子你的朝夕相伴，使我越来越感觉不能亏欠你，
+    因为爱的越深狠的就恨的越深，我的性格及经历决定了你我了解的时间必定会很长结果还未知，
+    所以我不想让你受伤太深，只能这么做，希望你能理解！
+    这也许就是我的命吧！也祝你能找到真正爱你的人，祝你幸福!
+
+  </div>
+  <a class="play" href="https://fy1302uc.github.io/snakePlay.github.io/">谢谢原谅！祝你幸福！玩下游戏吧！</a>
+
+
+
+
+  <!-- <a id ="zhufu"href="https://fy1302uc.github.io/zhufu.github.io/">2023年已至，送上新年祝福</a>
+-->
+</body>
+<script>
+  var wrap = document.getElementById('wrap');
+  var msg=document.querySelector('.msg');
+  var play=document.querySelector('.play');
+  var foot=document.querySelector('.foot');
+  var btnArr =document.querySelectorAll('.btn>button');
+  btnArr.forEach((item,index)=>{
+    item.addEventListener('click',function(){
+      if(index==0){
+        msg.style.display='block';
+      }else{
+        play.style.display='block';
+        foot.style.display='none';
+      }
+    })
+  })
+  
+  wrap.addEventListener('touchstart', function(ev) {
+    ev = ev || event;
+    ev.stopPropagation();
+  })
+  wrap.addEventListener('animationend', function(ev) {
+    ev = ev || event;
+    wrap.style.animation = 'none';
+    wrap.style.transform = 'rotateX(90deg)'
+
+
+  })
+  document.body.addEventListener('touchstart', function(ev) {
+    ev = ev || event;
+    var touchC = ev.changedTouches[0];
+    this.moveX = touchC.clientX;
+    this.moveY = touchC.clientY;
+    if (this.x === undefined) {
+      this.x = 0;
+      this.y = 90;
+    }
+
+
+
+  })
+  document.body.addEventListener('touchmove', function(ev) {
+    ev = ev || event;
+    var touchC = ev.changedTouches[0];
+
+    var x = touchC.clientX - this.moveX;
+    var y = touchC.clientY - this.moveY;
+    this.moveX = touchC.clientX;
+    this.moveY = touchC.clientY;
+    //document.body.innerHTML=x;
+    this.x += x;
+    this.y += -y;
+    wrap.style.transform = 'rotateY(' + this.x + 'deg) rotateX(' + this.y + 'deg)';
+  });
+  document.body.addEventListener('touchend', function(ev) {
+    ev = ev || event
+  })
+</script>
+
+</html>
