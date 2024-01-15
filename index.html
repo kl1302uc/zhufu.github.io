@@ -159,6 +159,13 @@
       box-sizing: border-box;
 
     }
+    .msg>button{
+      font-size:4vw;
+      position:absolute;
+      left:0;
+      bottom:0;
+      background-color:deeppink;
+    }
     .play{
       display: none;
       text-decoration: none;
@@ -215,6 +222,7 @@
     <p>凤箫声动，玉壶光转，一夜鱼龙舞。</p>
     <p>蛾儿雪柳黄金缕，笑语盈盈暗香去。</p>
     <p>众里寻他千百度，蓦然回首，那人却在，灯火阑珊处。</p>
+    <button>返回</button>
   </div>
   <a class="play" href="https://fy1302uc.github.io/snakePlay.github.io/">谢谢原谅！祝你幸福！玩下游戏吧！</a>
 
@@ -227,6 +235,7 @@
 <script>
   var wrap = document.getElementById('wrap');
   var msg=document.querySelector('.msg');
+  var back=document.querySelector(".msg>button");
   var play=document.querySelector('.play');
   var foot=document.querySelector('.foot');
   var btnArr =document.querySelectorAll('.btn>button');
@@ -240,7 +249,9 @@
       }
     })
   })
-  
+  back.addEventListener("click",()=>{
+    msg.style.display="none";
+  });
   wrap.addEventListener('touchstart', function(ev) {
     ev = ev || event;
     ev.stopPropagation();
